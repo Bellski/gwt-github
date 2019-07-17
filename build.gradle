@@ -1,0 +1,53 @@
+plugins {
+    id 'java'
+    id 'idea'
+    id "us.ascendtech.gwt.modern" version "0.4.16"
+}
+
+group 'ru.github.gwt'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven { url = 'https://raw.githubusercontent.com/intendia-oss/rxjava-gwt/mvn-repo/' }
+}
+
+task copyGenerated(type: Copy) {
+    from "${buildDir}/generated/sources/annotationProcessor/java/main"
+    include "**/*.java"
+    into "${buildDir}/classes/java/main"
+}
+
+compileJava.finalizedBy copyGenerated
+
+gwt {
+    modules = ['ru.github.gwt.github']
+    style = 'DETAILED'
+}
+
+dependencies {
+    implementation 'com.google.gwt:gwt-user:2.8.2-rx1'
+    implementation 'com.google.gwt:gwt-dev:2.8.2-rx1'
+    implementation 'com.google.elemental2:elemental2-dom:1.0.0-RC1'
+
+    annotationProcessor group: 'com.axellience', name: 'vue-gwt-processors', version: '1.0-beta-9'
+    implementation group: 'com.axellience', name: 'vue-gwt', version: '1.0-beta-9'
+
+    annotationProcessor group: 'com.google.dagger', name: 'dagger-compiler', version: '2.19'
+    implementation group: 'com.google.dagger', name: 'dagger-gwt', version: '2.19'
+
+    implementation group: 'com.intendia.gwt.rxgwt2', name: 'rxgwt', version: '2.2'
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ["src/main/java"]
+        }
+        resources {
+            srcDirs = ["src/main/java"]
+        }
+    }
+}
