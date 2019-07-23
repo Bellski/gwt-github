@@ -1,0 +1,16 @@
+<div class="app">
+    <div class="header">
+        {{ownerWithName}}
+    </div>
+    <split class="is-size-full is-flex-grow" :gutter-size="3" @onDrag="onDragGutter">
+        <split-area :size="25">
+            <repository-tree></repository-tree>
+        </split-area>
+        <split-area :size="75">
+            <git-tabs></git-tabs>
+        </split-area>
+    </split>
+    <div class="footer">
+
+    </div>
+</div>

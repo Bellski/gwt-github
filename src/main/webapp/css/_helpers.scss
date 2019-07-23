@@ -1,0 +1,17 @@
+.is-size-full {
+  width: 100%;
+  height: 100%;
+}
+
+.is-flex {
+  display: flex;
+
+  &.is-centered {
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.is-flex-grow {
+  flex-grow: 1;
+}

@@ -1,0 +1,20 @@
+<vue-gwt:import class="ru.github.gwt.vue.tabs.GitTab"/>
+
+<div class="is-size-full">
+    <el-tabs v-if="hasTabs"
+             v-model="activeTab"
+             class="justify-tabs"
+             type="border-card"
+             @tab-remove="onTabRemove"
+             closable
+    >
+        <el-tab-pane v-for="GitTab gitTab in tabs"
+                     :key="gitTab.key"
+                     :label="gitTab.name"
+                     :name="gitTab.key"
+        >
+            <git-source-view :git-tab="gitTab"></git-source-view>
+        </el-tab-pane>
+
+    </el-tabs>
+</div>

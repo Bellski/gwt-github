@@ -27,6 +27,10 @@ gwt {
     style = 'DETAILED'
 }
 
+npm {
+    nodeJsVersion = "12.1.0"
+}
+
 dependencies {
     implementation 'com.google.gwt:gwt-user:2.8.2-rx1'
     implementation 'com.google.gwt:gwt-dev:2.8.2-rx1'
